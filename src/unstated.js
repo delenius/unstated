@@ -32,8 +32,9 @@ export class Container<State: {}> {
         return;
       }
 
-      this.state = Object.assign({}, this.state, nextState);
-
+      //this.state = Object.assign({}, this.state, nextState);
+      this.state = nextState;
+                       
       let promises = this._listeners.map(listener => listener());
 
       return Promise.all(promises).then(() => {
